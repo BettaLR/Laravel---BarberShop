@@ -67,6 +67,11 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        // Prevent self-deactivation
+        if ($user->id === auth()->id()) {
+            return back()->with('error', 'You cannot deactivate your own account.');
+        }
+
         // Toggle active status
         $user->update(['is_active' => !$user->is_active]);
         $status = $user->is_active ? 'activated' : 'deactivated';
