@@ -51,11 +51,10 @@
                                         <a href="{{ route('admin.services.edit', $service) }}"
                                             class="text-barber-gold hover:text-white mr-3 transition duration-300">Edit</a>
                                         <form action="{{ route('admin.services.destroy', $service) }}" method="POST"
-                                            class="inline">
+                                            class="inline delete-service-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-400 hover:text-red-200 transition duration-300"
-                                                onclick="return confirm('Are you sure you want to delete this service?')">
+                                            <button type="submit" class="text-red-400 hover:text-red-200 transition duration-300">
                                                 Delete
                                             </button>
                                         </form>
@@ -71,4 +70,33 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('.delete-service-form');
+
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Sí, eliminarlo',
+                        cancelButtonText: 'Cancelar',
+                        background: '#1a1a1a',
+                        color: '#ffffff'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </x-app-layout>

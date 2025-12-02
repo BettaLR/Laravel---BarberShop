@@ -24,3 +24,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/test-alert', function () {
+    return redirect()->route('dashboard')->with('success', 'SweetAlert está funcionando correctamente!');
+});

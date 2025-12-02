@@ -56,12 +56,11 @@
                                         <a href="{{ route('admin.users.edit', $user) }}"
                                             class="text-barber-gold hover:text-white mr-3 transition duration-300">Edit</a>
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
-                                            class="inline">
+                                            class="inline toggle-status-form">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="text-red-400 hover:text-red-200 transition duration-300"
-                                                onclick="return confirm('Are you sure you want to toggle this user status?')">
+                                                class="text-red-400 hover:text-red-200 transition duration-300">
                                                 {{ $user->is_active ? 'Deactivate' : 'Activate' }}
                                             </button>
                                         </form>
@@ -77,4 +76,35 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('.toggle-status-form');
+
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const button = this.querySelector('button');
+                    const action = button.innerText.trim();
+
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: `¿Quieres ${action.toLowerCase()} este usuario?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Sí, hazlo',
+                        cancelButtonText: 'Cancelar',
+                        background: '#1a1a1a',
+                        color: '#ffffff'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </x-app-layout>
