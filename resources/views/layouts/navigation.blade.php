@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b bg-barber-black border-barber-gray">
+<nav x-data="{ open: false }" class="border-b bg-barber-black border-barber-gold border-b-2">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -14,20 +14,20 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
                         class="text-white hover:text-barber-gold focus:text-barber-gold">
-                        {{ __('Dashboard') }}
+                        {{ __('Panel') }}
                     </x-nav-link>
 
-                    @if(Auth::user()->isStaff())
+                    @if(Auth::user()->isStaff() || Auth::user()->isClient())
                         <x-nav-link :href="route('admin.services.index')" :active="request()->routeIs('admin.services.*')"
                             class="text-white hover:text-barber-gold focus:text-barber-gold">
-                            {{ __('Services') }}
+                            {{ __('Servicios') }}
                         </x-nav-link>
                     @endif
 
                     @if(Auth::user()->isAdmin())
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')"
                             class="text-white hover:text-barber-gold focus:text-barber-gold">
-                            {{ __('Users') }}
+                            {{ __('Usuarios') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -55,7 +55,7 @@
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')"
                             class="text-white bg-barber-gray hover:bg-barber-black hover:text-barber-gold">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -65,7 +65,7 @@
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();"
                                 class="text-white bg-barber-gray hover:bg-barber-black hover:text-barber-gold">
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar Sesión') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

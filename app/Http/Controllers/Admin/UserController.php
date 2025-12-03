@@ -72,6 +72,11 @@ class UserController extends Controller
             return back()->with('error', 'You cannot deactivate your own account.');
         }
 
+        // Prevent deactivating other admins
+        if ($user->role === 'admin') {
+            return back()->with('error', 'You cannot deactivate other administrators.');
+        }
+
         // Toggle active status
         $user->update(['is_active' => !$user->is_active]);
         $status = $user->is_active ? 'activated' : 'deactivated';

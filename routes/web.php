@@ -19,7 +19,12 @@ Route::middleware('auth')->group(function () {
     // Admin Routes
     Route::middleware(['role:admin,staff'])->prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-        Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
+        Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class)->except(['index']);
+    });
+
+    // Services accessible to clients (read-only)
+    Route::middleware(['role:admin,staff,client'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('services', [\App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
     });
 });
 

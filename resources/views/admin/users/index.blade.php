@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-barber-gold leading-tight">
-                {{ __('Users Management') }}
+                {{ __('Gestión de Usuarios') }}
             </h2>
             <a href="{{ route('admin.users.create') }}"
                 class="bg-barber-gold hover:bg-white text-barber-black font-bold py-2 px-4 rounded transition duration-300">
-                Create User
+                Crear Usuario
             </a>
         </div>
     </x-slot>
@@ -20,19 +20,19 @@
                             <tr>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-barber-gold uppercase tracking-wider">
-                                    Name</th>
+                                    Nombre</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-barber-gold uppercase tracking-wider">
-                                    Email</th>
+                                    Correo</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-barber-gold uppercase tracking-wider">
-                                    Role</th>
+                                    Rol</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-barber-gold uppercase tracking-wider">
-                                    Status</th>
+                                    Estado</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-barber-gold uppercase tracking-wider">
-                                    Actions</th>
+                                    Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700 bg-barber-gray">
@@ -43,25 +43,25 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $user->role === 'admin' ? 'bg-red-900 text-red-200' : ($user->role === 'staff' ? 'bg-blue-900 text-blue-200' : 'bg-gray-700 text-gray-300') }}">
-                                            {{ ucfirst($user->role) }}
+                                            {{ $user->role === 'admin' ? 'Administrador' : ($user->role === 'staff' ? 'Personal' : 'Cliente') }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $user->is_active ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200' }}">
-                                            {{ $user->is_active ? 'Active' : 'Inactive' }}
+                                            {{ $user->is_active ? 'Activo' : 'Inactivo' }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                         <a href="{{ route('admin.users.edit', $user) }}"
-                                            class="text-barber-gold hover:text-white mr-3 transition duration-300">Edit</a>
+                                            class="text-barber-gold hover:text-white mr-3 transition duration-300">Editar</a>
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
                                             class="inline toggle-status-form">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="text-red-400 hover:text-red-200 transition duration-300">
-                                                {{ $user->is_active ? 'Deactivate' : 'Activate' }}
+                                                {{ $user->is_active ? 'Desactivar' : 'Activar' }}
                                             </button>
                                         </form>
                                     </td>

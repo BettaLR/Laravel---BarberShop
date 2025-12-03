@@ -26,15 +26,14 @@
             <div class="p-6 text-right sm:fixed sm:top-0 sm:right-0 z-10">
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Dashboard</a>
+                        class="font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Panel</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Log
-                        in</a>
+                        class="font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Iniciar Sesión</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Register</a>
+                            class="ml-4 font-semibold text-white hover:text-barber-gold focus:outline focus:outline-2 focus:rounded-sm focus:outline-barber-gold">Registrarse</a>
                     @endif
                 @endauth
             </div>
@@ -44,19 +43,19 @@
             <!-- Hero Section -->
             <div class="text-center max-w-4xl px-6">
                 <h1 class="text-6xl font-serif font-bold text-barber-gold mb-4 tracking-wide">
-                    PREMIUM CUTS
+                    CORTES PREMIUM
                 </h1>
                 <p class="text-xl text-gray-300 mb-8 font-light tracking-wider">
-                    EST. 2025 • MASTER BARBERS • CLASSIC STYLE
+                    EST. 2025 • BARBEROS MAESTROS • ESTILO CLÁSICO
                 </p>
                 <div class="flex justify-center gap-4">
                     <a href="{{ route('login') }}"
                         class="px-8 py-3 bg-barber-gold text-barber-black font-bold uppercase tracking-widest hover:bg-white transition duration-300">
-                        Book Appointment
+                        Reservar Cita
                     </a>
                     <a href="#services"
                         class="px-8 py-3 border border-barber-gold text-barber-gold font-bold uppercase tracking-widest hover:bg-barber-gold hover:text-barber-black transition duration-300">
-                        View Services
+                        Ver Servicios
                     </a>
                 </div>
             </div>
@@ -66,7 +65,7 @@
         <div id="services" class="py-20 bg-barber-gray">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-serif font-bold text-white mb-2">Our Services</h2>
+                    <h2 class="text-4xl font-serif font-bold text-white mb-2">Nuestros Servicios</h2>
                     <div class="w-24 h-1 bg-barber-gold mx-auto"></div>
                 </div>
 
@@ -76,8 +75,8 @@
                         class="bg-barber-black p-8 border border-gray-800 hover:border-barber-gold transition duration-300 group">
                         <div class="text-barber-gold text-4xl mb-4 group-hover:scale-110 transition duration-300">✂️
                         </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Classic Haircut</h3>
-                        <p class="text-gray-400 mb-4">Precision cut tailored to your style, finished with a hot towel.
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Corte Clásico</h3>
+                        <p class="text-gray-400 mb-4">Corte de precisión adaptado a tu estilo, terminado con toalla caliente.
                         </p>
                         <span class="text-barber-gold font-bold text-xl">$35</span>
                     </div>
@@ -87,9 +86,8 @@
                         class="bg-barber-black p-8 border border-gray-800 hover:border-barber-gold transition duration-300 group">
                         <div class="text-barber-gold text-4xl mb-4 group-hover:scale-110 transition duration-300">🪒
                         </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Beard Trim & Shave</h3>
-                        <p class="text-gray-400 mb-4">Sculpting and detailing for the perfect beard, or a clean straight
-                            razor shave.</p>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Barba y Afeitado</h3>
+                        <p class="text-gray-400 mb-4">Esculpido y detallado para la barba perfecta, o un afeitado limpio con navaja.</p>
                         <span class="text-barber-gold font-bold text-xl">$25</span>
                     </div>
 
@@ -98,9 +96,8 @@
                         class="bg-barber-black p-8 border border-gray-800 hover:border-barber-gold transition duration-300 group">
                         <div class="text-barber-gold text-4xl mb-4 group-hover:scale-110 transition duration-300">✨
                         </div>
-                        <h3 class="text-2xl font-serif font-bold text-white mb-2">The Full Service</h3>
-                        <p class="text-gray-400 mb-4">Haircut, beard trim, wash, and style. The ultimate grooming
-                            experience.</p>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Servicio Completo</h3>
+                        <p class="text-gray-400 mb-4">Corte de cabello, arreglo de barba, lavado y peinado. La experiencia de aseo definitiva.</p>
                         <span class="text-barber-gold font-bold text-xl">$55</span>
                     </div>
                 </div>
@@ -115,8 +112,8 @@
                     <p class="text-gray-500 text-sm mt-2">© Tec express</p>
                 </div>
                 <div class="text-center md:text-right text-gray-400">
-                    <p>Tecnologico de Software</p>
-                    <p>Lunes-Sabados: 9am - 7pm</p>
+                    <p>Tecnológico de Software</p>
+                    <p>Lunes-Sábados: 9am - 7pm</p>
                     <p class="text-barber-gold mt-2">(+52) 999-9999</p>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-barber-gold leading-tight">
-            {{ __('Create Service') }}
+            {{ __('Crear Servicio') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
 
                         <!-- Name -->
                         <div>
-                            <x-input-label for="name" :value="__('Name')" class="text-white" />
+                            <x-input-label for="name" :value="__('Nombre')" class="text-white" />
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="old('name')" required autofocus />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -22,7 +22,7 @@
 
                         <!-- Price -->
                         <div class="mt-4">
-                            <x-input-label for="price" :value="__('Price')" class="text-white" />
+                            <x-input-label for="price" :value="__('Precio')" class="text-white" />
                             <x-text-input id="price" class="block mt-1 w-full" type="number" step="0.01" name="price"
                                 :value="old('price')" required />
                             <x-input-error :messages="$errors->get('price')" class="mt-2" />
@@ -30,7 +30,7 @@
 
                         <!-- Duration -->
                         <div class="mt-4">
-                            <x-input-label for="duration" :value="__('Duration (minutes)')" class="text-white" />
+                            <x-input-label for="duration" :value="__('Duración (minutos)')" class="text-white" />
                             <x-text-input id="duration" class="block mt-1 w-full" type="number" name="duration"
                                 :value="old('duration')" required />
                             <x-input-error :messages="$errors->get('duration')" class="mt-2" />
@@ -42,14 +42,14 @@
                                 <input id="is_active" type="checkbox"
                                     class="rounded border-gray-300 text-barber-gold shadow-sm focus:ring-barber-gold"
                                     name="is_active" value="1" checked>
-                                <span class="ml-2 text-sm text-gray-300">{{ __('Active') }}</span>
+                                <span class="ml-2 text-sm text-gray-300">{{ __('Activo') }}</span>
                             </label>
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
                             <x-primary-button
                                 class="ml-4 bg-barber-gold text-barber-black hover:bg-white hover:text-barber-black">
-                                {{ __('Create Service') }}
+                                {{ __('Crear Servicio') }}
                             </x-primary-button>
                         </div>
                     </form>
