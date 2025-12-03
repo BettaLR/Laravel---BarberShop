@@ -4,10 +4,17 @@
             <h2 class="font-semibold text-xl text-barber-gold leading-tight">
                 {{ __('Gestión de Servicios') }}
             </h2>
-            <a href="{{ route('admin.services.create') }}"
-                class="bg-barber-gold hover:bg-white text-barber-black font-bold py-2 px-4 rounded transition duration-300">
-                Crear Servicio
-            </a>
+            @if(Auth::user()->isAdmin() || Auth::user()->isStaff())
+                <a href="{{ route('admin.services.create') }}"
+                    class="bg-barber-gold hover:bg-white text-barber-black font-bold py-2 px-4 rounded transition duration-300">
+                    Crear Servicio
+                </a>
+            @else
+                <button onclick="showUnauthorizedAlert()"
+                    class="bg-barber-gold hover:bg-white text-barber-black font-bold py-2 px-4 rounded transition duration-300">
+                    Crear Servicio
+                </button>
+            @endif
         </div>
     </x-slot>
 
@@ -72,6 +79,18 @@
     </div>
 
     <script>
+        function showUnauthorizedAlert() {
+            Swal.fire({
+                title: 'Acceso Denegado',
+                text: 'No tienes permisos para realizar esta acción.',
+                icon: 'warning',
+                confirmButtonColor: '#c5a059',
+                confirmButtonText: 'Entendido',
+                background: '#1a1a1a',
+                color: '#ffffff'
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const forms = document.querySelectorAll('.delete-service-form');
 
